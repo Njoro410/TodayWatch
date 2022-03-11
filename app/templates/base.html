@@ -24,11 +24,13 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                {% if isIndex %}
                 <form class="d-flex">
                     <input class="form-control me-2" name="movie_query" id="search" type="search" placeholder="Search Movie"
                         aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
+                {% endif %}
             </div>
         </div>
     </nav>
