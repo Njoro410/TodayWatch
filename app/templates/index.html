@@ -1,0 +1,43 @@
+{% extends 'base.html'%}
+{% block content %}
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+{% endblock %}
+
+
+<div class="container" style="margin-top: 100px;">
+    <h2 style="text-align: center;">Most Popular</h2>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        {% for popular in popular %}
+        <div class="card mb-3 border-0" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{{ popular.poster }}" class="img-fluid rounded-start" alt="{{ popular.title }} poster"
+                       >
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <a href="/movie/{{popular.id}}"><h5 class="card-title">{{popular.title}}</h5></a>
+                        
+                        <p class="card-text">{{popular.overview|truncate(162, True)}}
+
+                            <a href="" data-bs-toggle="tooltip" data-bs-placement="top" title="{{popular.overview}}">....</a>
+                        </p>
+                        <p class="card-text"><small class="text-muted">Rating:{{popular.vote_average}}</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="">
+    Tooltip on top
+  </button>
+
+
+{% endblock %}
+{block jQuery} 
+
+{endblock}
