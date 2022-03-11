@@ -48,7 +48,6 @@ def get_movie(id):
             title = movie_details_response.get('original_title')
             overview = movie_details_response.get('overview')
             poster = movie_details_response.get('poster_path')
-            backdrop = movie_details_response.get('backdrop_path')
             vote_average = movie_details_response.get('vote_average')
             vote_count = movie_details_response.get('vote_count')
             tagline = movie_details_response.get('tagline')
@@ -59,7 +58,7 @@ def get_movie(id):
             imdb_id = movie_details_response.get('imdb_id')
             runtime = movie_details_response.get('runtime')
 
-            movie_object = Movie(id, title, overview, poster, backdrop, vote_average,
+            movie_object = Movie(id, title, overview, poster, vote_average,
                                  vote_count, tagline, genres, date, language, prod, imdb_id, runtime)
 
     return movie_object
@@ -136,14 +135,13 @@ def process_results(movie_list):
         genres = movie_item.get('genres')
         date = movie_item.get('release_date')
         language = movie_item.get('spoken_languages')
-        backdrop = movie_item.get('backdrop_path')
         prod = movie_item.get('production_companies')
         imdb_id = movie_item.get('imdb_id')
         runtime = movie_item.get('runtime')
 
         if poster:
 
-            movie_object = Movie(id, title, overview, poster, backdrop,
+            movie_object = Movie(id, title, overview, poster,
                                  vote_average, vote_count, tagline, genres, date, language, prod, imdb_id, runtime)
             movie_results.append(movie_object)
 
